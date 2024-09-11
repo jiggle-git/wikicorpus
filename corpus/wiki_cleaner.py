@@ -68,16 +68,3 @@ def clean_content(wiki_text: str) -> str:
     result = re.sub(r'\-\{zh-hans:(.*?);zh-hant:(.*?);.*?\}\-', r'\1', result)
     return result
 
-
-if __name__ == '__main__':
-    pass
-    # filepaths = utils.filepaths('wiki')
-    # filepaths = ['wiki/Linux内核_130.txt']
-    # for filepath in filepaths:
-    #     filename = utils.filename(filepath)
-    #     with (open(filepath, 'r', encoding='utf-8') as infile,
-    #           open(f'wiki_cleaned/{filename}_cleaned.txt', 'w', encoding='utf-8') as outfile):
-    #         content = infile.read()
-    #         cleaned_wiki = clean_wiki(content)
-    #         outfile.write(cleaned_wiki)
-    #         outfile.flush()
