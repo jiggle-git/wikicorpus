@@ -43,14 +43,13 @@ def clean_content(wiki_text: str) -> str:
             if wiki_node.wiki_markup is not None:
                 lines.append(str(wiki_node.contents))
         elif isinstance(wiki_node, Heading):
-            # 编号，从第2级开始
-            level_num = wiki_node.level - 1
+            level_num = wiki_node.level
             if len(ids) < level_num:
                 ids += [1] * (level_num - len(ids))
             else:
                 ids[level_num - 1] += 1
             ids = ids[:level_num]
-            ids_str = '.'.join([str(iid) for iid in ids])
+            ids_str = '.'.join([str(iid) for iid in ids if iid > 0])
             lines.append(f'{ids_str} {clean_content(str(wiki_node.title).strip())}')
         elif isinstance(wiki_node, ExternalLink):
             if wiki_node.title is not None:
